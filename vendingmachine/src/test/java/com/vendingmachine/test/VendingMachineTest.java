@@ -34,9 +34,9 @@ public class VendingMachineTest {
     @Test
     public void testBuyItemWithExactPrice() {
         //select item, price in cents
-        long price = vm.selectItemAndGetPrice(Item.COKE); 
-        //price should be Coke's price      
-        assertEquals(Item.COKE.getPrice(), price);
+        long price = vm.selectItemAndGetPrice(Item.CHIPS); 
+        //price should be CHIPS's price      
+        assertEquals(Item.CHIPS.getPrice(), price);
         //25 cents paid              
         vm.insertCoin(Coin.twentyfive);                           
        
@@ -44,16 +44,16 @@ public class VendingMachineTest {
         Item item = bucket.getFirst();
         List<Coin> change = bucket.getSecond();
        
-        //should be Coke
-        assertEquals(Item.COKE, item);
+        //should be CHIPS
+        assertEquals(Item.CHIPS, item);
         //there should not be any change                              
         assertTrue(change.isEmpty());                              
     }
    
     @Test
     public void testBuyItemWithMorePrice(){
-        long price = vm.selectItemAndGetPrice(Item.SODA);
-        assertEquals(Item.SODA.getPrice(), price);
+        long price = vm.selectItemAndGetPrice(Item.CHOCOLATE);
+        assertEquals(Item.CHOCOLATE.getPrice(), price);
        
         vm.insertCoin(Coin.twentyfive);       
         vm.insertCoin(Coin.twentyfive);      
@@ -62,20 +62,20 @@ public class VendingMachineTest {
         Item item = bucket.getFirst();
         List<Coin> change = bucket.getSecond();
        
-        //should be Coke
-        assertEquals(Item.SODA, item);
+        //should be CHIPS
+        assertEquals(Item.CHOCOLATE, item);
         //there should not be any change                                     
         assertTrue(!change.isEmpty());        
         //comparing change                             
-        assertEquals(50 - Item.SODA.getPrice(), getTotal(change));  
+        assertEquals(50 - Item.CHOCOLATE.getPrice(), getTotal(change));  
        
     }  
   
    
     @Test
     public void testRefund(){
-        long price = vm.selectItemAndGetPrice(Item.PEPSI);
-        assertEquals(Item.PEPSI.getPrice(), price);       
+        long price = vm.selectItemAndGetPrice(Item.BISCUITS);
+        assertEquals(Item.BISCUITS.getPrice(), price);       
         vm.insertCoin(Coin.ten);
         vm.insertCoin(Coin.five);
         vm.insertCoin(Coin.one);
@@ -87,7 +87,7 @@ public class VendingMachineTest {
     @Test(expected=SoldOutException.class)
     public void testSoldOut(){
         for (int i = 0; i < 5; i++) {
-            vm.selectItemAndGetPrice(Item.COKE);
+            vm.selectItemAndGetPrice(Item.CHIPS);
             vm.insertCoin(Coin.twentyfive);
             vm.collectItemAndChange();
         }
@@ -97,12 +97,12 @@ public class VendingMachineTest {
     @Test(expected=NotSufficientChangeException.class)
     public void testNotSufficientChangeException(){
         for (int i = 0; i < 5; i++) {
-            vm.selectItemAndGetPrice(Item.SODA);
+            vm.selectItemAndGetPrice(Item.CHOCOLATE);
             vm.insertCoin(Coin.twentyfive);
             vm.insertCoin(Coin.twentyfive);
             vm.collectItemAndChange();
            
-            vm.selectItemAndGetPrice(Item.PEPSI);
+            vm.selectItemAndGetPrice(Item.BISCUITS);
             vm.insertCoin(Coin.twentyfive);
             vm.insertCoin(Coin.twentyfive);
             vm.collectItemAndChange();
@@ -115,7 +115,7 @@ public class VendingMachineTest {
         VendingMachine vmachine = VendingMachineFactory.createVendingMachine();
         vmachine.reset();
        
-        vmachine.selectItemAndGetPrice(Item.COKE);
+        vmachine.selectItemAndGetPrice(Item.CHIPS);
        
     }
    

@@ -57,6 +57,19 @@ public class RunVendingMachine {
        
         System.out.println(vmachine.selectItemAndGetPrice(Item.CHIPS));
        
+        //NotSufficientChangeException
+
+        for (int i = 0; i < 5; i++) {
+            vm.selectItemAndGetPrice(Item.CHOCOLATE);
+            vm.insertCoin(Coin.twentyfive);
+            vm.insertCoin(Coin.twentyfive);
+            vm.collectItemAndChange();
+           
+            vm.selectItemAndGetPrice(Item.BISCUITS);
+            vm.insertCoin(Coin.twentyfive);
+            vm.insertCoin(Coin.twentyfive);
+            vm.collectItemAndChange();
+        }
     
 	}
 
