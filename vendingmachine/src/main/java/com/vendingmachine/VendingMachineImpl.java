@@ -23,11 +23,11 @@ public class VendingMachineImpl implements VendingMachine {
 	        //initialize machine with 5 coins of each denomination
 	        //and 5 cans of each Item       
 	        for(Coin c : Coin.values()){
-	            cashInventory.put(c, 5);
+	            cashInventory.put(c, 10);
 	        }
 	       
 	        for(Item i : Item.values()){
-	            itemInventory.put(i, 5);
+	            itemInventory.put(i, 10);
 	        }
 	       
 	    }

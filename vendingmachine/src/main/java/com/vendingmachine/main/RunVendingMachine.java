@@ -1,9 +1,15 @@
-package com.vendingmachine;
+package com.vendingmachine.main;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+
+import com.vendingmachine.Bucket;
+import com.vendingmachine.Coin;
+import com.vendingmachine.Item;
+import com.vendingmachine.VendingMachine;
+import com.vendingmachine.factory.VendingMachineFactory;
 
 public class RunVendingMachine {
     private static VendingMachine vm;

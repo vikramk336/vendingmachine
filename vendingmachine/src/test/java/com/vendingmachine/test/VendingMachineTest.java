@@ -13,10 +13,10 @@ import com.vendingmachine.Bucket;
 import com.vendingmachine.Coin;
 import com.vendingmachine.Item;
 import com.vendingmachine.VendingMachine;
-import com.vendingmachine.VendingMachineFactory;
 import com.vendingmachine.VendingMachineImpl;
 import com.vendingmachine.exceptions.NotSufficientChangeException;
 import com.vendingmachine.exceptions.SoldOutException;
+import com.vendingmachine.factory.VendingMachineFactory;
 
 public class VendingMachineTest {
     private static VendingMachine vm;
